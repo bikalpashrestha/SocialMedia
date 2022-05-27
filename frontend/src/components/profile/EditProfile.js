@@ -39,8 +39,14 @@ const initState = {
         e.preventDefault()
         dispatch(updateProfileUser({ userData, avatar, auth }))
     }
-    
-    
+    return (
+        <div className="edit_profile">
+            <button className="btn btn-danger btn_close"
+                onClick={() => setOnEdit(false)}>
+                Close
+            </button>
+
+            
 }
 
 export default EditProfile
