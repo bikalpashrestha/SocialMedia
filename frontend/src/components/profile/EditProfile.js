@@ -77,7 +77,13 @@ const initState = {
                     <input type="text" name="address" value={address}
                         className="form-control" onChange={handleInput} />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="website">Website</label>
+                    <input type="text" name="website" value={website}
+                        className="form-control" onChange={handleInput} />
+                </div>
 
+               s
                                            
 }
 
