@@ -45,8 +45,18 @@ const initState = {
                 onClick={() => setOnEdit(false)}>
                 Close
             </button>
-
-            
+		<form onSubmit={handleSubmit}>
+                <div className="info_avatar">
+                    <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
+                        alt="avatar" style={{ filter: theme ? 'invert(1)' : 'invert(0)' }} />
+                    <span>
+                        <i className="fas fa-camera" />
+                        <p>Change</p>
+                        <input type="file" name="file" id="file_up"
+                            accept="image/*" onChange={changeAvatar} />
+                    </span>
+                </div>
+                          
 }
 
 export default EditProfile
