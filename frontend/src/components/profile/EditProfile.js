@@ -56,7 +56,19 @@ const initState = {
                             accept="image/*" onChange={changeAvatar} />
                     </span>
                 </div>
-                          
+                <div className="form-group">
+                    <label htmlFor="fullname">Full Name</label>
+                    <div className="position-relative">
+                        <input type="text" className="form-control" id="fullname"
+                            name="fullname" value={fullname} onChange={handleInput} />
+                        <small className="text-danger position-absolute"
+                            style={{ top: '50%', right: '5px', transform: 'translateY(-50%)' }}>
+                            {fullname.length}/25
+                        </small>
+                    </div>
+                </div>
+
+                             
 }
 
 export default EditProfile
