@@ -91,7 +91,21 @@ const initState = {
                         {story.length}/200
                     </small>
                 </div>
+                <label htmlFor="gender">Gender</label>
+                <div className="input-group-prepend px-0 mb-4">
+                    <select name="gender" id="gender" value={gender}
+                        className="custom-select text-capitalize"
+                        onChange={handleInput}>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
 
+                <button className="btn btn-info w-100" type="submit">Save</button>
+            </form>
+        </div>
+    )
                 
                                            
 }
