@@ -82,8 +82,17 @@ const initState = {
                     <input type="text" name="website" value={website}
                         className="form-control" onChange={handleInput} />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="story">Story</label>
+                    <textarea name="story" value={story} cols="30" rows="4"
+                        className="form-control" onChange={handleInput} />
 
-               s
+                    <small className="text-danger d-block text-right">
+                        {story.length}/200
+                    </small>
+                </div>
+
+                
                                            
 }
 
