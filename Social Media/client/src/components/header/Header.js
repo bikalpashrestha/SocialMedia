@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Menu from './Menu'
 import Search from './Search'
 
-const Header = () => {
+//const Header = () => {
 
     return (
         <div className="header bg-light">
@@ -25,4 +25,4 @@ const Header = () => {
     )
 }
 
-export default Header
+//export default Header
