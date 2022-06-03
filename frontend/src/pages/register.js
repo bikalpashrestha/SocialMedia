@@ -6,7 +6,33 @@
 
  const Register = () => {
     const { auth, alert } = useSelector(state => state)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const initialState = { 
+        fullname: '', username: '', email: '', password: '', cf_password: '', gender: 'male'
+    }
+    const [userData, setUserData] = useState(initialState)
+    const { fullname, username, email, password, cf_password } = userData
+
+    const [typePass, setTypePass] = useState(false)
+    const [typeCfPass, setTypeCfPass] = useState(false)
+ 
+     useEffect(()=>{
+    if(auth.token) history.push("/")
+     },[auth.token,history])
+     
     
+    
+     const handleChangeInput = e => {
+       const { name, value } = e.target
+   
+       setUserData({ ...userData, [name]: value })
+     }
+   
+     const handleSubmit = e => {
+       e.preventDefault()
+       dispatch(register(userData))
      
    
      }
@@ -52,7 +78,23 @@
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
 
-                    
+                    <div className="pass">
+                        
+                        <input type={ typePass ? "text" : "password" } 
+                        className="form-control" id="exampleInputPassword1"
+                        onChange={handleChangeInput} value={password} name="password"
+                        style={{background: `${alert.password ? '#fd2d6a14' : ''}`}} />
+
+                        <small onClick={() => setTypePass(!typePass)}>
+                            {typePass ? <i classNme="fas fa-eye"></i> :<i className="fas fa-eye-slash"></i>}
+                        </small>
+                    </div>
+
+                    <small className="form-text text-danger">
+                        {alert.password ? alert.password : ''}
+                    </small>
+                </div>
+
                 <div className="form-group">
                     <label htmlFor="cf_password">Confirm Password</label>
 
