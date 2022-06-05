@@ -49,7 +49,7 @@ const EditProfile = ({setOnEdit}) => {
                 Close
             </button>
 
-            {/* <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="info_avatar">
                     <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
                     alt="avatar" style={{filter: theme ? 'invert(1)' : 'invert(0)'}} />
@@ -61,7 +61,7 @@ const EditProfile = ({setOnEdit}) => {
                     </span>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="fullname">Full Name</label>
                     <div className="position-relative">
                         <input type="text" className="form-control" id="fullname"
@@ -112,8 +112,8 @@ const EditProfile = ({setOnEdit}) => {
                     </select>
                 </div>
 
-                <button className="btn btn-info w-100" type="submit">Save</button>
-            </form> */}
+                <button className="btn btn-info w-100" type="submit">Save</button> */}
+            </form>
         </div>
     )
 }
