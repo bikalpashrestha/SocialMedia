@@ -22,3 +22,28 @@ const authCtrl = {
             const newUser = new Users({
                 fullname, username: newUserName, email, password: passwordHash, gender, role
             })
+
+
+            const access_token = createAccessToken({id: newUser._id})
+            const refresh_token = createRefreshToken({id: newUser._id})
+
+            res.cookie('refreshtoken', refresh_token, {
+                httpOnly: true,
+                path: '/api/refresh_token',
+                maxAge: 30*24*60*60*1000 // 30days
+            })
+
+            await newUser.save()
+
+            res.json({
+                msg: 'Register Success!',
+                access_token,
+                user: {
+                    ...newUser._doc,
+                    password: ''
+                }
+            })
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
+    },
