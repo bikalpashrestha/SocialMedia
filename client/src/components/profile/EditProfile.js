@@ -61,7 +61,7 @@ const EditProfile = ({setOnEdit}) => {
                     </span>
                 </div>
 
-                {/* <div className="form-group">
+                <div className="form-group">
                     <label htmlFor="fullname">Full Name</label>
                     <div className="position-relative">
                         <input type="text" className="form-control" id="fullname"
@@ -70,49 +70,9 @@ const EditProfile = ({setOnEdit}) => {
                         style={{top: '50%', right: '5px', transform: 'translateY(-50%)'}}>
                             {fullname.length}/25
                         </small>
-                    </div>
+                    </div>  
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="mobile">Mobile</label>
-                    <input type="text" name="mobile" value={mobile}
-                    className="form-control" onChange={handleInput} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="address">Address</label>
-                    <input type="text" name="address" value={address}
-                    className="form-control" onChange={handleInput} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="website">Website</label>
-                    <input type="text" name="website" value={website}
-                    className="form-control" onChange={handleInput} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="story">Story</label>
-                    <textarea name="story" value={story} cols="30" rows="4"
-                    className="form-control" onChange={handleInput} />
-
-                    <small className="text-danger d-block text-right">
-                        {story.length}/200
-                    </small>
-                </div>
-
-                <label htmlFor="gender">Gender</label>
-                <div className="input-group-prepend px-0 mb-4">
-                    <select name="gender" id="gender" value={gender}
-                    className="custom-select text-capitalize"
-                    onChange={handleInput}>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <button className="btn btn-info w-100" type="submit">Save</button> */}
             </form>
         </div>
     )
