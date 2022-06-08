@@ -72,7 +72,11 @@ const EditProfile = ({setOnEdit}) => {
                         </small>
                     </div>  
                 </div>
-
+                <div className="form-group">
+                    <label htmlFor="mobile">Mobile</label>
+                    <input type="text" name="mobile" value={mobile}
+                    className="form-control" onChange={handleInput} />
+                </div>
             </form>
         </div>
     )
