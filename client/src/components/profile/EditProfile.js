@@ -77,6 +77,11 @@ const EditProfile = ({setOnEdit}) => {
                     <input type="text" name="mobile" value={mobile}
                     className="form-control" onChange={handleInput} />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="address">Address</label>
+                    <input type="text" name="address" value={address}
+                    className="form-control" onChange={handleInput} />
+                </div>
             </form>
         </div>
     )
