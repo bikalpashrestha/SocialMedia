@@ -23,3 +23,46 @@
     border-bottom: 1px solid #ddd;
     transform: translateY(-13px);
 } 
+.status_body textarea{
+    width: 100%;
+    min-height: 150px;
+    border: none;
+    outline: none;
+    resize: none;
+}
+.status_body .input_images{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.status_body .input_images i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.status_body .input_images .file_upload{
+    overflow: hidden;
+    margin: 0 10px;
+    position: relative;
+}
+.status_body .input_images .file_upload #file{
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+}
+.status_body .show_images{
+    max-height: 270px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    place-items: center;
+    padding: 10px 0;
+    grid-gap: 10px;
+}
+.status_body .show_images #file_img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
