@@ -10,7 +10,7 @@ export const POST_TYPES = {
     GET_COMMENTS: 'GET_COMMENTS',
     UPDATE_POST: 'UPDATE_POST',
     GET_POST: 'GET_POST',
-    
+    DELETE_POST: 'DELETE_POST'
 }
 
 export const createPost = ({ content, images, auth, socket }) => async (dispatch) => {
@@ -182,3 +182,26 @@ export const getPost = ({ detailPost, id, auth }) => async (dispatch) => {
         }
     }
 }
+export const deletePost = ({ post, auth, socket }) => async (dispatch) => {
+    dispatch({ type: POST_TYPES.DELETE_POST, payload: post })
+
+    try {
+        const res = await deleteDataAPI(`post/${post._id}`, auth.token)
+
+        // Notify
+        const msg = {
+            id: post._id,
+            text: 'added a new post.',
+            recipients: res.data.newPost.user.followers,
+            url: `/post/${post._id}`,
+        }
+        dispatch(removeNotify({ msg, auth, socket }))
+
+    } catch (err) {
+        dispatch({
+            type: GLOBALTYPES.ALERT,
+            payload: { error: err.response.data.msg }
+        })
+    }
+}
+
