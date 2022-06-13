@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PostThumb from '../PostThumb'
+import LoadIcon from '../../images/loading.gif'
+import LoadMoreBtn from '../LoadMoreBtn'
+import { getDataAPI } from '../../utils/fetchData'
 import { PROFILE_TYPES } from '../../redux/actions/profileAction'
 
 const Posts = ({auth, id, dispatch, profile}) => {
@@ -17,8 +20,8 @@ const Posts = ({auth, id, dispatch, profile}) => {
             }
         })
     },[profile.posts, id])
-   
- const handleLoadMore = async () => {
+
+    const handleLoadMore = async () => {
         setLoad(true)
         const res = await getDataAPI(`user_posts/${id}?limit=${page * 9}`, auth.token)
         const newData = {...res.data, page: page + 1, _id: id}
@@ -26,8 +29,6 @@ const Posts = ({auth, id, dispatch, profile}) => {
         setLoad(false)
     }
 
-
-   
     return (
         <div>
             <PostThumb posts={posts} result={result} />
