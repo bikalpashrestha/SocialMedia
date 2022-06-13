@@ -26,3 +26,29 @@ const Saved = ({auth, dispatch}) => {
         return () => setSavePosts([])
     },[auth.token, dispatch])
 
+    const handleLoadMore = async () => {
+        setLoad(true)
+        const res = await getDataAPI(`getSavePosts?limit=${page * 9}`, auth.token)
+        setSavePosts(res.data.savePosts)
+        setResult(res.data.result)
+        setPage(page + 1)
+        setLoad(false)
+    }
+
+    return (
+        <div>
+            <PostThumb posts={savePosts} result={result} />
+
+            {
+                load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+            }
+
+             
+            <LoadMoreBtn result={result} page={page}
+            load={load} handleLoadMore={handleLoadMore} />
+            
+        </div>
+    )
+}
+
+export default Saved
