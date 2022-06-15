@@ -185,27 +185,4 @@ export const unfollow = ({users, user, auth, socket}) => async (dispatch) => {
     }
 }
 
-export const getAllUsers = ({ token }) => async (dispatch) => {
-    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } })
 
-    try {
-        const res = await getDataAPI('users', token)
-        dispatch({
-            type: PROFILE_TYPES.GET_USERS,
-            payload: {
-                users: res.data.users,
-                result: res.data.result
-            }
-        })
-
-        dispatch({ type: GLOBALTYPES.ALERT, payload: {} })
-
-    } catch (err) {
-        dispatch({
-            type: GLOBALTYPES.ALERT,
-            payload: {
-                error: err.response.data.msg
-            }
-        })
-    }
-}
