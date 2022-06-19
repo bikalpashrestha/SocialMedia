@@ -14,6 +14,8 @@ app.use(cookieParser())
 
 //Routes 
 app.use("/api",require("./routes/authRouter"))
+app.use("/api",require("./routes/userRouter"))
+app.use('/api', require('./routes/postRouter'))
 
 
 const URI = process.env.MONGODB_URL  
@@ -27,10 +29,3 @@ mongoose.connect(URI, {
  
 
 
-// Create peer server
-ExpressPeerServer(http, { path: '/' })
-
-const port = process.env.PORT || 5000
-http.listen(port, () => {
-    console.log('Server is running on port', port)
-})   
