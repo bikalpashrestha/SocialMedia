@@ -41,8 +41,39 @@ const messageReducer = (state = initialState, action) => {
                     : user
                 )
             };
-     
-
+        case MESS_TYPES.GET_CONVERSATIONS:
+            return {
+                ...state,
+                users: action.payload.newArr,
+                resultUsers: action.payload.result,
+                firstLoad: true
+            };
+        case MESS_TYPES.GET_MESSAGES:
+            return {
+                ...state,
+                data: [...state.data, action.payload]
+            };
+        case MESS_TYPES.UPDATE_MESSAGES:
+            return {
+                ...state,
+                data: EditData(state.data, action.payload._id, action.payload)
+            };
+        
+            case MESS_TYPES.DELETE_MESSAGES:
+            return {
+                ...state,
+                data: state.data.map(item => 
+                    item._id === action.payload._id
+                    ? {...item, messages: action.payload.newData}
+                    : item
+                )
+            };
+        case MESS_TYPES.DELETE_CONVERSATION:
+            return {
+                ...state,
+                users: DeleteData(state.users, action.payload),
+                data: DeleteData(state.data, action.payload)
+            };
         case MESS_TYPES.CHECK_ONLINE_OFFLINE:
             return {
                 ...state,
