@@ -10,15 +10,15 @@ const Carousel = ({images, id}) => {
 
     return (
         <div id={`image${id}`} className="carousel slide" data-ride="carousel">
-            
-
-            <div className="carousel-inner">
+            <ol className="carousel-indicators" style={{zIndex: 1}}>
                 {
                     images.map((img, index) => (
-                        <div key={index} className={`carousel-item ${isActive(index)}`}>
-                           
-                           
-                        </div>
+                        <li key={index} data-target={`#image${id}`} 
+                        data-slide-to={index} className={isActive(index)} />
+                    ))
+                }
+                
+            </ol>
                     ))
                 }
                 
