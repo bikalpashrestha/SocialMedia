@@ -34,3 +34,13 @@
     cursor: pointer;
     padding: 15px 25px;
 }
+/* ---------- Post Card Body ---------- */
+.posts .card_body-content{
+    padding: 0 25px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.posts .card_body-content .readMore{
+    color: crimson;
+    cursor: pointer;
+}
