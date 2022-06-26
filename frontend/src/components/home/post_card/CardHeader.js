@@ -1,6 +1,10 @@
 import React from 'react'
 import Avatar from '../../Avatar'
-
+import moment from 'moment'
+import { Link, useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { GLOBALTYPES } from '../../../redux/actions/globalTypes'
+import { deletePost } from '../../../redux/actions/postAction'
 
 const CardHeader = ({ post }) => {
     const { auth, socket } = useSelector(state => state)
@@ -26,6 +30,34 @@ const CardHeader = ({ post }) => {
                             {post.user.username}
                         </Link>
                     </h6>
+                    <small className="text-muted">
+                        {moment(post.createdAt).fromNow()}
+                    </small>
+                </div>
+            </div>
+            <div className="nav-item dropdown">
+                <span className="material-icons" id="moreLink" data-toggle="dropdown">
+                    more_horiz
+                </span>
+                <div className="dropdown-menu">
+                    {
+                        auth.user._id === post.user._id &&
+                        <>
+                            <div className="dropdown-item" onClick={handleEditPost}>
+                                <span className="material-icons">create</span> Edit Post
+                            </div>
+                            <div className="dropdown-item" onClick={handleDeletePost} >
+                                <span className="material-icons">delete_outline</span> Remove Post
+                            </div>
+                        </>
+                    }
+
+                    <div className="dropdown-item" >
+                        <span className="material-icons">content_copy</span> Copy Link
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 }
