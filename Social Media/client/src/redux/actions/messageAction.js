@@ -48,3 +48,43 @@ export const getConversations = ({auth, page = 1}) => async (dispatch) => {
     }
 }
 
+export const getMessages = ({auth, id, page = 1}) => async (dispatch) => {
+    try {
+        const res = await getDataAPI(`message/${id}?limit=${page * 9}`, auth.token)
+        const newData = {...res.data, messages: res.data.messages.reverse()}
+
+        dispatch({type: MESS_TYPES.GET_MESSAGES, payload: {...newData, _id: id, page}})
+    } catch (err) {
+        dispatch({type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}})
+    }
+}
+
+export const loadMoreMessages = ({auth, id, page = 1}) => async (dispatch) => {
+    try {
+        const res = await getDataAPI(`message/${id}?limit=${page * 9}`, auth.token)
+        const newData = {...res.data, messages: res.data.messages.reverse()}
+
+        dispatch({type: MESS_TYPES.UPDATE_MESSAGES, payload: {...newData, _id: id, page}})
+    } catch (err) {
+        dispatch({type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}})
+    }
+}
+
+export const deleteMessages = ({msg, data, auth}) => async (dispatch) => {
+    const newData = DeleteData(data, msg._id)
+    dispatch({type: MESS_TYPES.DELETE_MESSAGES, payload: {newData, _id: msg.recipient}})
+    try {
+        await deleteDataAPI(`message/${msg._id}`, auth.token)
+    } catch (err) {
+        dispatch({type: GLOBALTYPES.ALERT})
+    } 
+}
+
+export const deleteConversation = ({auth, id}) => async (dispatch) => {
+    dispatch({type: MESS_TYPES.DELETE_CONVERSATION, payload: id})
+    try {
+        await deleteDataAPI(`conversation/${id}`, auth.token)
+    } catch (err) {
+        dispatch({type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg}})
+    }
+}
