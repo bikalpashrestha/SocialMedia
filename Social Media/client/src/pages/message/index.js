@@ -12,4 +12,17 @@ const Message = () => {
                 <div className="d-flex justify-content-center 
                 align-items-center flex-column h-100">
 
-               
+                    {/* <i className="fab fa-facebook-messenger text-primary"
+                    style={{fontSize: '5rem'}} /> */}
+                    <h1 className="navbar-brand text-uppercase p-0 m-0" onClick={() => window.scrollTo({ top: 0 })}>
+                        Port<span className='text-primary'>al </span><span className='text-danger'>Message</span>
+
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Message
