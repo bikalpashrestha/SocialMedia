@@ -37,3 +37,14 @@ export const createComment = ({post, newComment, auth, socket}) => async (dispat
     }
 }
 
+export const updateComment = ({comment, post, content, auth}) => async (dispatch) => {
+    const newComments = EditData(post.comments, comment._id, {...comment, content})
+    const newPost = {...post, comments: newComments}
+    
+    dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost })
+    try {
+        patchDataAPI(`comment/${comment._id}`, { content }, auth.token)
+    } catch (err) {
+        dispatch({ type: GLOBALTYPES.ALERT, payload: {error: err.response.data.msg} })
+    }
+}
