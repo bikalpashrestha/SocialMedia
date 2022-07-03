@@ -1,4 +1,4 @@
-const Comments = require('../models/commentModel')
+const Comments = require('../models/comments/commentModel')
 const Posts = require('../models/postModel')
 
 
