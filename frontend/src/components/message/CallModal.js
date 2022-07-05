@@ -201,7 +201,55 @@ const CallModal = () => {
                         <small>{ second.toString().length < 2 ? '0' + second : second }</small>
                     </div>
                 }
+                <div className="call_menu">
+                    <button className="material-icons text-danger"
+                    onClick={handleEndCall}>
+                        call_end
+                    </button>
+                    
+                    {
+                        (call.recipient === auth.user._id && !answer) &&
+                        <>
+                            {
+                                call.video
+                                ? <button className="material-icons text-success"
+                                onClick={handleAnswer}>
+                                    videocam
+                                </button>
+                                : <button className="material-icons text-success"
+                                onClick={handleAnswer}>
+                                    call
+                                </button>
+                            }
+                        </>
+                    }
+                    
+                </div>
                 
+            </div>
+
+            <div className="show_video" style={{
+                opacity: (answer && call.video) ? '1' : '0',
+                filter: theme ? 'invert(1)' : 'invert(0)'
+            }} >
+
+                <video ref={youVideo} className="you_video" playsInline muted />
+                <video ref={otherVideo} className="other_video" playsInline />
+
+                <div className="time_video">
+                    <span>{ hours.toString().length < 2 ? '0' + hours : hours }</span>
+                    <span>:</span>
+                    <span>{ mins.toString().length < 2 ? '0' + mins : mins }</span>
+                    <span>:</span>
+                    <span>{ second.toString().length < 2 ? '0' + second : second }</span>
+                </div>
+
+                <button className="material-icons text-danger end_call"
+                onClick={handleEndCall}>
+                    call_end
+                </button>
+
+            </div>
 
                 
 
