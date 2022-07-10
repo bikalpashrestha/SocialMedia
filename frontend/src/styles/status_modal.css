@@ -23,6 +23,12 @@
     border-bottom: 1px solid #ddd;
     transform: translateY(-13px);
 } 
+.status_header span{
+    font-size: 2rem;
+    font-weight: 900;
+    cursor: pointer;
+    transform: translateY(-5px);
+}
 .status_body textarea{
     width: 100%;
     min-height: 150px;
