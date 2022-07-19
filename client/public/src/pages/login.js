@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { login } from '../redux/actions/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 
-
 const Login = () => {
     const initialState = { email: '', password: '' }
     const [userData, setUserData] = useState(initialState)
@@ -14,6 +13,7 @@ const Login = () => {
     const { auth } = useSelector(state => state)
     const dispatch = useDispatch()
     const history = useHistory()
+
 
     useEffect(() => {
         if(auth.token) history.push("/")
